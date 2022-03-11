@@ -39,7 +39,7 @@
             this.lbl_TotalTopics = new System.Windows.Forms.Label();
             this.btn_StartLesson = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.lst_AllTopics = new System.Windows.Forms.ListBox();
+            this.lst_ListAllData = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_TopicName = new System.Windows.Forms.TextBox();
             this.txt_LessonDesc = new System.Windows.Forms.TextBox();
@@ -50,8 +50,9 @@
             this.tmr_SessionTimer = new System.Windows.Forms.Timer(this.components);
             this.lbl_SelectedLesson = new System.Windows.Forms.Label();
             this.lbl_SelectedTopic = new System.Windows.Forms.Label();
-            this.btn_QueryForm = new System.Windows.Forms.Button();
             this.btn_StopStudying = new System.Windows.Forms.Button();
+            this.btn_ListTopics = new System.Windows.Forms.Button();
+            this.btn_ListLessons = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txt_LessonName
@@ -128,7 +129,7 @@
             // 
             this.lbl_TotalTopics.AutoSize = true;
             this.lbl_TotalTopics.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lbl_TotalTopics.Location = new System.Drawing.Point(353, 150);
+            this.lbl_TotalTopics.Location = new System.Drawing.Point(454, 71);
             this.lbl_TotalTopics.Name = "lbl_TotalTopics";
             this.lbl_TotalTopics.Size = new System.Drawing.Size(62, 13);
             this.lbl_TotalTopics.TabIndex = 5;
@@ -154,14 +155,14 @@
             this.label9.Size = new System.Drawing.Size(602, 10);
             this.label9.TabIndex = 7;
             // 
-            // lst_AllTopics
+            // lst_ListAllData
             // 
-            this.lst_AllTopics.FormattingEnabled = true;
-            this.lst_AllTopics.ItemHeight = 15;
-            this.lst_AllTopics.Location = new System.Drawing.Point(258, 175);
-            this.lst_AllTopics.Name = "lst_AllTopics";
-            this.lst_AllTopics.Size = new System.Drawing.Size(328, 124);
-            this.lst_AllTopics.TabIndex = 8;
+            this.lst_ListAllData.FormattingEnabled = true;
+            this.lst_ListAllData.ItemHeight = 15;
+            this.lst_ListAllData.Location = new System.Drawing.Point(258, 175);
+            this.lst_ListAllData.Name = "lst_ListAllData";
+            this.lst_ListAllData.Size = new System.Drawing.Size(328, 124);
+            this.lst_ListAllData.TabIndex = 8;
             // 
             // label10
             // 
@@ -250,16 +251,6 @@
             this.lbl_SelectedTopic.TabIndex = 11;
             this.lbl_SelectedTopic.Text = "Seçili Konu:";
             // 
-            // btn_QueryForm
-            // 
-            this.btn_QueryForm.Location = new System.Drawing.Point(124, 272);
-            this.btn_QueryForm.Name = "btn_QueryForm";
-            this.btn_QueryForm.Size = new System.Drawing.Size(98, 27);
-            this.btn_QueryForm.TabIndex = 12;
-            this.btn_QueryForm.Text = "Detaylı Sorgu";
-            this.btn_QueryForm.UseVisualStyleBackColor = true;
-            this.btn_QueryForm.Click += new System.EventHandler(this.btn_QueryForm_Click);
-            // 
             // btn_StopStudying
             // 
             this.btn_StopStudying.Enabled = false;
@@ -272,18 +263,41 @@
             this.btn_StopStudying.UseVisualStyleBackColor = true;
             this.btn_StopStudying.Click += new System.EventHandler(this.btn_StopStudying_Click);
             // 
+            // btn_ListTopics
+            // 
+            this.btn_ListTopics.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btn_ListTopics.Location = new System.Drawing.Point(16, 272);
+            this.btn_ListTopics.Name = "btn_ListTopics";
+            this.btn_ListTopics.Size = new System.Drawing.Size(88, 27);
+            this.btn_ListTopics.TabIndex = 14;
+            this.btn_ListTopics.Text = "Konuları Listele";
+            this.btn_ListTopics.UseVisualStyleBackColor = true;
+            this.btn_ListTopics.Click += new System.EventHandler(this.btn_ListTopics_Click);
+            // 
+            // btn_ListLessons
+            // 
+            this.btn_ListLessons.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btn_ListLessons.Location = new System.Drawing.Point(117, 272);
+            this.btn_ListLessons.Name = "btn_ListLessons";
+            this.btn_ListLessons.Size = new System.Drawing.Size(88, 27);
+            this.btn_ListLessons.TabIndex = 14;
+            this.btn_ListLessons.Text = "Dersleri Listele";
+            this.btn_ListLessons.UseVisualStyleBackColor = true;
+            this.btn_ListLessons.Click += new System.EventHandler(this.btn_ListLessons_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(598, 311);
+            this.Controls.Add(this.btn_ListLessons);
+            this.Controls.Add(this.btn_ListTopics);
             this.Controls.Add(this.btn_StopStudying);
-            this.Controls.Add(this.btn_QueryForm);
             this.Controls.Add(this.lbl_SelectedTopic);
             this.Controls.Add(this.lbl_SelectedLesson);
             this.Controls.Add(this.lbl_SessionTime);
-            this.Controls.Add(this.lst_AllTopics);
+            this.Controls.Add(this.lst_ListAllData);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lbl_TotalTopics);
@@ -322,7 +336,7 @@
         private System.Windows.Forms.Label lbl_TotalTopics;
         private System.Windows.Forms.Button btn_StartLesson;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ListBox lst_AllTopics;
+        private System.Windows.Forms.ListBox lst_ListAllData;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txt_TopicName;
         private System.Windows.Forms.TextBox txt_LessonDesc;
@@ -333,8 +347,9 @@
         private System.Windows.Forms.Timer tmr_SessionTimer;
         private System.Windows.Forms.Label lbl_SelectedLesson;
         private System.Windows.Forms.Label lbl_SelectedTopic;
-        private System.Windows.Forms.Button btn_QueryForm;
         private System.Windows.Forms.Button btn_StopStudying;
+        private System.Windows.Forms.Button btn_ListTopics;
+        private System.Windows.Forms.Button btn_ListLessons;
     }
 }
 

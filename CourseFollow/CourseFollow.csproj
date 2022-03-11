@@ -71,12 +71,9 @@
     <Compile Include="Models\Entities\Topic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QueryForm.Designer.cs">
-      <DependentUpon>QueryForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Tools\DTOClasses\BaseDTO.cs" />
+    <Compile Include="Tools\DTOClasses\LessonInfoDTO.cs" />
+    <Compile Include="Tools\DTOClasses\TopicInfoDTO.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,9 +86,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="QueryForm.resx">
-      <DependentUpon>QueryForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -106,9 +100,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tools\DTOClasses\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -29,28 +29,31 @@ namespace CourseFollow
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ListTopics();
+            cmb_ListTopics.SelectedIndex = -1; lst_ListAllData.SelectedIndex = -1;
 
-            cmb_ListTopics.SelectedIndex = -1; // Program ilk açıldığında ComboBox'ın boş gelmesini sağlar.
-            lst_AllTopics.SelectedIndex = -1;
+            //Ekranda toplamda kaç adet konu olduğunu sayı olarak gösterir.
+            lbl_TotalTopics.Text = $"Kayıtlı {_db.Topics.Count()} adet konu var";
         }
 
         private void btn_AddTopic_Click(object sender, EventArgs e)
         {
-            AddTopic(); ClearBoxes();
+            AddTopic(); ClearBoxes(); 
+            lbl_TotalTopics.Text = $"Kayıtlı {_db.Topics.Count()} adet konu var";
+        }
+
+        private void btn_ListTopics_Click(object sender, EventArgs e)
+        {
+            ListTopics();
+        }
+
+        private void btn_ListLessons_Click(object sender, EventArgs e)
+        {
+            ListLesson();
         }
 
         private void btn_StartLesson_Click(object sender, EventArgs e)
         {
             AddLesson();
-        }
-
-        private void btn_QueryForm_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Geliştirilme Aşamasındadır !!");
-
-            //QueryForm queryForm = new QueryForm();
-            //queryForm.Show();
         }
 
         /// <summary>
@@ -71,7 +74,7 @@ namespace CourseFollow
                 btn_StartLesson.Enabled = true; btn_AddTopic.Enabled = true;
 
                 ClearBoxes();
-                MessageBox.Show("Ders bilgileri veritabanına kaydedildi."); 
+                MessageBox.Show("Ders bilgileri veritabanına kaydedildi.");
                 btn_StopStudying.Enabled = false;
                 return;
             }
@@ -110,13 +113,18 @@ namespace CourseFollow
         public void ListTopics()
         {
             //Ana listeye toplam kayıtlı olan konuları gösterir.
-            lst_AllTopics.DataSource = _db.Topics.ToList();
-
-            //Ekranda toplamda kaç adet konu olduğunu sayı olarak gösterir.
-            lbl_TotalTopics.Text = $"Kayıtlı {_db.Topics.Count()} adet konu var";
+            lst_ListAllData.DataSource = _db.Topics.ToList();
 
             //Ekrandaki Combobox'a kayıtlı olan konuları ekler.
             cmb_ListTopics.DataSource = _db.Topics.ToList();
+        }
+
+        /// <summary>
+        /// Kayıtlı olan dersleri listeler
+        /// </summary>
+        public void ListLesson()
+        {
+            lst_ListAllData.DataSource = _db.Lessons.ToList();
         }
 
         /// <summary>
@@ -149,21 +157,13 @@ namespace CourseFollow
                         tmr_SessionTimer.Start();
 
                         btn_StartLesson.Enabled = false; btn_AddTopic.Enabled = false; btn_StopStudying.Enabled = true;
-                        ListLesson(); ClearBoxes(); ScreenHelper();
+                        ClearBoxes(); ScreenHelper();
                         return;
                     }
                     else MessageBox.Show("Oturum başlatılmadı.");
                 }
                 else MessageBox.Show("Lütfen dersin ekleneceği konuyu seçiniz!");
             }
-        }
-
-        /// <summary>
-        /// ToDo: Burası yaratılacak.
-        /// </summary>
-        public void ListLesson()
-        {
-
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace CourseFollow
         {
             txt_TopicName.Text = txt_TopicDesc.Text = txt_LessonName.Text = txt_LessonDesc.Text = string.Empty;
 
-            cmb_ListTopics.SelectedIndex = lst_AllTopics.SelectedIndex = -1;
+            cmb_ListTopics.SelectedIndex = lst_ListAllData.SelectedIndex = -1;
         }
         #endregion
 
